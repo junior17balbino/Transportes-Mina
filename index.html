@@ -1,0 +1,1662 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <!-- amCharts javascript sources -->
+		<script type="text/javascript" src="https://www.amcharts.com/lib/3/ammap.js"></script>
+		<script type="text/javascript" src="https://www.amcharts.com/lib/3/maps/js/mexicoLow.js"></script>
+
+		<!-- amCharts javascript code -->
+		<script type="text/javascript">
+			AmCharts.makeChart("map",{
+					"type": "map",
+					"pathToImages": "http://www.amcharts.com/lib/3/images/",
+					"addClassNames": true,
+					"fontSize": 15,
+					"color": "rgb(221, 220, 243)",
+					"projection": "mercator",
+					"backgroundAlpha": 1,
+					"backgroundColor": "rgb(221, 220, 243)",
+					"dataProvider": {
+						"map": "mexicoLow",
+						"getAreasFromMap": true,
+						"images": [
+							{
+								"top": 40,
+								"left": 60,
+								"width": 80,
+								"height": 40,
+								"pixelMapperLogo": true,
+								"imageURL": "http://pixelmap.amcharts.com/static/img/logo-black.svg",
+								"url": "http://www.amcharts.com"
+							}
+						]
+					},
+					"balloon": {
+						"horizontalPadding": 15,
+						"borderAlpha": 0,
+						"borderThickness": 1,
+						"verticalPadding": 15
+					},
+					"areasSettings": {
+						"color": "rgb(4, 4, 55)",
+						"outlineColor": "rgba(255,255,255,1)",
+						"rollOverOutlineColor": "rgba(255,255,255,1)",
+						"rollOverBrightness": 50,
+						"selectedBrightness": 50,
+						"selectable": true,
+						"unlistedAreasAlpha": 0,
+						"unlistedAreasOutlineAlpha": 0
+					},
+					"imagesSettings": {
+						"alpha": 1,
+						"color": "rgb(4, 4, 55)",
+						"outlineAlpha": 0,
+						"rollOverOutlineAlpha": 0,
+						"outlineColor": "rgba(255,255,255,1)",
+						"rollOverBrightness": 50,
+						"selectedBrightness": 50,
+						"selectable": true
+					},
+					"linesSettings": {
+						"color": "rgb(4, 4, 55)",
+						"selectable": true,
+						"rollOverBrightness": 50,
+						"selectedBrightness": 50
+					},
+					"zoomControl": {
+						"zoomControlEnabled": true,
+						"homeButtonEnabled": false,
+						"panControlEnabled": false,
+						"right": 38,
+						"bottom": 30,
+						"minZoomLevel": 0.25,
+						"gridHeight": 100,
+						"gridAlpha": 0.1,
+						"gridBackgroundAlpha": 0,
+						"gridColor": "#FFFFFF",
+						"draggerAlpha": 1,
+						"buttonCornerRadius": 2
+					}
+				});
+		</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Logística y Distribución Mina</title>
+
+    <link href="img/logo.png" rel="icon">
+
+    <!-- Fuentes para el dashboard o algo asi -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS + Icons + Google Fonts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Google Fonts: tipología moderna y profesional -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+    <style>
+
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --text-color: #fff;
+            --transition-speed: 0.5s;
+            --slide-width: 1200px;
+            --slide-height: 400px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1e2a32;
+            background-color: #dddcf3;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .display-heading {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        /* Navbar moderna */
+        .navbar {
+            background: linear-gradient(135deg, rgba(0, 53, 123), #0A1128);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.03);
+            padding: 0.8rem 0;
+            transition: all 0.2s;
+        }
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.7rem;
+            letter-spacing: -0.5px;
+            color: #afb1af !important;
+        }
+        .navbar-brand span {
+            font-weight: 400;
+            color: #9e9d9c;
+        }
+        .nav-link {
+            font-weight: 500;
+            color: #2c3e2f !important;
+            margin: 0 0.5rem;
+            transition: 0.2s;
+        }
+        .nav-link:hover {
+            color: #696867 !important;
+        }
+
+        /* Hero */
+        .hero {
+            background-image: url("img/inicio.png"), linear-gradient(to right, rgba(0, 53, 123), rgba(0, 53, 123));
+            background-repeat: no-repeat;
+            background-size: contain;
+            width: 100%; /* estaba en 100 para centrar el texto */
+            height: 400px;
+            background-position: 0%;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 72px;
+            position:relative; /* remover si no sirve */
+        }
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 700;
+        }
+        .hero .badge-experience {
+            background-color: #6d6c6b;
+            padding: 0.5rem 1.8rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1rem;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+        margin: 5px 0 0 0;
+        font-size: 26px;
+        }
+
+        .hero p span {
+            letter-spacing: 2px;
+            border-bottom: 2px solid var(--accent-color);
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        /* sección nosotros */
+        .section-title {
+            font-size: 2.6rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        .section-sub {
+            color: #b87c4f;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+        }
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #100570;
+            line-height: 1;
+        }
+        .stat-label {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #2d3e2f;
+        }
+
+        /* Tarjetas servicios */
+        .service-card {
+            background: #fefaf5;
+            border-radius: 24px;
+            padding: 0.5rem 1.5rem;
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 1px solid rgba(0,0,0,0.03);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            background: white;
+            box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.1);
+        }
+        .service-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #e1cbb4;
+            font-family: monospace;
+            margin-bottom: 0.5rem;
+        }
+        .service-icon {
+            font-size: 2.2rem;
+            color: #160579;
+            margin-bottom: 1rem;
+        }
+
+        /* Galería: imagenes aleatorias estilo masonry */
+        .gallery-img {
+            width: 100%;
+            height: 100px;
+            object-fit:contain;
+            border-radius: 20px;
+            transition: 0.4s;
+            box-shadow: 0 12px 24px -10px rgba(0,0,0,0.1);
+        }
+        .gallery-img:hover {
+            transform: scale(1.05);
+        }
+
+
+        /* Botón contacto */
+        .btn-whatsapp-custom {
+            background-color: #25D366;
+            color: white;
+            font-weight: 600;
+            padding: 12px 30px;
+            border-radius: 50px;
+            transition: 0.2s;
+            border: none;
+        }
+        .btn-whatsapp-custom:hover {
+            background-color: #128C7E;
+            transform: scale(1.02);
+            color: white;
+        }
+        footer {
+            background: rgb(1, 31, 70);
+            color: #ddd;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .navbar-brand {
+                font-size: 1.4rem;
+            }
+        }
+
+        .test-card {
+            background:  #dddcf3;
+            border-radius: 24px;
+            padding: 0rem;
+            text-align: center;
+            height: 100%;
+            transition: 0.2s;
+        }
+
+        /* ===== TARJETA DASHBOARD ===== */
+    .dashboard {
+        max-width: 1500px;
+        width: 100%;
+        background: #dddcf3;
+        border-radius: 2.5rem;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        padding: 2.5rem 2rem;
+        transition: all 0.2s ease;
+        }
+
+        /* ===== ENCABEZADO ===== */
+        .dashboard-header {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2.5rem;
+        }
+
+        .dashboard-header h1 {
+        font-size: 2rem;
+        font-weight: 600;
+        color: #0b1b33;
+        letter-spacing: -0.02em;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        }
+
+        .dashboard-header h1 i {
+        color: #3b82f6;
+        font-size: 2rem;
+        }
+
+        .fecha-dinamica {
+        background: #eef2f6;
+        padding: 0.6rem 1.2rem;
+        border-radius: 60px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: #1e293b;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
+        }
+
+        .fecha-dinamica i {
+        color: #3b82f6;
+        }
+
+        /* ===== TARJETA DESTACADA: SATISFACCIÓN GLOBAL ===== */
+        .global-satisfaction {
+        background: linear-gradient(to right, rgba(0, 53, 123), rgb(1, 38, 87));
+        border-radius: 2rem;
+        padding: 1.2rem 1.8rem;
+        margin-bottom: 2.5rem;
+        border: 1px solid #dbe7f5;
+        box-shadow: 0 8px 14px rgba(0, 20, 50, 0.04);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+        }
+
+        .satisfaction-left {
+        display: flex;
+        align-items: center;
+        gap: 1.8rem;
+        flex-wrap: wrap;
+        }
+
+        .satisfaction-title {
+        display: flex;
+        flex-direction: column;
+        }
+
+        .satisfaction-title .label {
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #f2f4f7;
+        }
+
+        .satisfaction-title .main-label {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #0b1b33;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        }
+
+        .satisfaction-title .main-label i {
+        color: #facc15;
+        }
+
+        /* semicírculo dentro de la tarjeta global */
+        .semi-circle-wrapper.global {
+        width: 85px;
+        height: 85px;
+        flex-shrink: 0;
+        }
+
+        .semi-circle-wrapper.global svg {
+        width: 85px;
+        height: 85px;
+        }
+
+        .semi-circle-wrapper.global .center-value {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #f6f7fa;
+        }
+
+        .semi-circle-wrapper.global .center-value small {
+        font-size: 0.65rem;
+        font-weight: 500;
+        color: #f1f3f5;
+        }
+
+        .global-stars {
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+        background: rgba(0, 53, 123);
+        padding: 0.3rem 1rem 0.3rem 0.8rem;
+        border-radius: 60px;
+        font-weight: 600;
+        color: #edeff1;
+        }
+
+        .global-stars i {
+        color: #facc15;
+        font-size: 1.1rem;
+        }
+
+        .global-stars .half-star {
+        color: #facc15;
+        position: relative;
+        }
+
+        .global-stars .half-star:after {
+        content: '\f089';
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 50%;
+        overflow: hidden;
+        color: #facc15;
+        }
+
+        .global-badge {
+        background: #22c55e10;
+        border: 1px solid #22c55e30;
+        padding: 0.3rem 1rem;
+        border-radius: 60px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #ecf1ee;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        white-space: nowrap;
+        }
+
+        /* ===== TARJETAS MÉTRICAS (con semicírculo) ===== */
+        .metric-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+        }
+
+        .metric-card {
+        background: #bebec0; /* fondo de las tarjetas */
+        border-radius: 3.5rem;
+        padding: 1.5rem 1.2rem 1.2rem;
+        transition: 0.2s;
+        border: 1px solid #edf2f7;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        }
+
+        .metric-card:hover {
+        background: #ffffff;
+        border-color: #dbe7f5;
+        box-shadow: 0 8px 18px rgba(0, 30, 60, 0.06);
+        }
+
+        .metric-label {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #64748b;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+        margin-bottom: 0.5rem;
+        }
+
+        .metric-card1 {
+        background: linear-gradient(to right, rgba(0, 53, 123), rgb(1, 38, 87));
+        border-radius: 2rem;
+        padding: 1.2rem 1.8rem;
+        margin-bottom: 2.5rem;
+        border: 1px solid #dbe7f5;
+        box-shadow: 0 8px 14px rgba(0, 20, 50, 0.04);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        }
+        
+        .global-badge1 {
+        background: #22c55e10;
+        border: 1px solid #22c55e30;
+        padding: 0.3rem 1rem;
+        border-radius: 60px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #10c257;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        white-space: nowrap;
+        }
+
+        /* ===== SEMICÍRCULO (donut) ===== */
+        .semi-circle-wrapper {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        margin: 0.2rem auto 0.5rem;
+        }
+
+        .semi-circle-wrapper svg {
+        transform: rotate(-90deg);
+        width: 110px;
+        height: 110px;
+        display: block;
+        }
+
+        .semi-circle-wrapper .bg-circle {
+        fill: none;
+        stroke: #858686;
+        stroke-width: 10;
+        }
+
+        .semi-circle-wrapper .progress-circle {
+        fill: none;
+        stroke-width: 10;
+        stroke-linecap: round;
+        transition: stroke-dasharray 0.6s ease;
+        stroke: #07964e;
+        }
+
+        .semi-circle-wrapper .center-value {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1.7rem;
+        font-weight: 700;
+        color: #0b1b33;
+        line-height: 1;
+        }
+
+        .semi-circle-wrapper .center-value small {
+        font-size: 0.7rem;
+        font-weight: 500;
+        color: #64748b;
+        margin-left: 1px;
+        }
+
+        .metric-trend {
+        display: inline-block;
+        margin-top: 0.2rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 0.15rem 0.7rem;
+        border-radius: 30px;
+        background: #e6f7e6;
+        color: #0d7c3f;
+        }
+
+        .metric-trend.down {
+        background: #fee9e7;
+        color: #b91c1c;
+        }
+
+        .metric-trend i {
+        margin-right: 3px;
+        }
+
+        /* ===== GRÁFICO DINÁMICO (aprobación) ===== */
+        .chart-section {
+        background: #f9fafc;
+        border-radius: 2rem;
+        padding: 1.8rem 1.8rem 1.8rem 1.8rem;
+        margin-bottom: 2.5rem;
+        border: 1px solid #edf2f7;
+        }
+
+        .chart-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 1.8rem;
+        }
+
+        .chart-header h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #0b1b33;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        }
+
+        .chart-header h3 i {
+        color: #3b82f6;
+        }
+
+        .chart-badge {
+        background: #e0e8f3;
+        border-radius: 60px;
+        padding: 0.3rem 1rem;
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: #1e3a5f;
+        }
+
+        /* barras de aprobación (dinámicas) */
+        .chart-bars {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+        }
+
+        .bar-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+        }
+
+        .bar-label {
+        width: 120px;
+        font-weight: 500;
+        color: #1e293b;
+        font-size: 0.95rem;
+        }
+
+        .bar-track {
+        flex: 1;
+        height: 12px;
+        background: #e2e8f0;
+        border-radius: 40px;
+        overflow: hidden;
+        min-width: 120px;
+        box-shadow: inset 0 1px 2px rgba(0,0,0,0.04);
+        }
+
+        .bar-fill {
+        height: 100%;
+        border-radius: 40px;
+        background: linear-gradient(90deg, #3b82f6, #60a5fa);
+        width: 0%;
+        transition: width 0.6s ease;
+        box-shadow: 0 0 6px rgba(59,130,246,0.2);
+        }
+
+        .bar-fill.opinion-positive {
+        background: linear-gradient(90deg, #22c55e, #4ade80);
+        }
+
+        .bar-fill.opinion-neutral {
+        background: linear-gradient(90deg, #f59e0b, #fbbf24);
+        }
+
+        .bar-fill.opinion-negative {
+        background: linear-gradient(90deg, #ef4444, #f87171);
+        }
+
+        .bar-percent {
+        min-width: 48px;
+        text-align: right;
+        font-weight: 600;
+        color: #0f172a;
+        font-size: 0.95rem;
+        }
+
+        /* ===== SECCIÓN OPINIONES ===== */
+        .opinion-section {
+        margin-top: 1.5rem;
+        }
+
+        .opinion-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        flex-wrap: wrap;
+        }
+
+        .opinion-header h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #0b1b33;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        }
+
+        .opinion-header h3 i {
+        color: #8b5cf6;
+        }
+
+        .opinion-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.5rem;
+        }
+
+        .opinion-card {
+        background: #f9fafc;
+        border-radius: 1.8rem;
+        padding: 1.5rem 1.2rem;
+        border: 1px solid #edf2f7;
+        transition: 0.2s;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        }
+
+        .opinion-card:hover {
+        background: #ffffff;
+        border-color: #d0dcec;
+        box-shadow: 0 10px 20px -8px rgba(0, 20, 40, 0.08);
+        }
+
+        .opinion-cliente {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-weight: 600;
+        color: #0b1b33;
+        }
+
+        .opinion-cliente i {
+        font-size: 1.2rem;
+        color: #3b82f6;
+        background: #dbeafe;
+        padding: 0.3rem;
+        border-radius: 60px;
+        }
+
+        .opinion-texto {
+        font-size: 0.95rem;
+        color: #1e293b;
+        line-height: 1.4;
+        background: #ffffff;
+        padding: 0.8rem 1rem;
+        border-radius: 1.2rem;
+        border: 1px solid #eaf0f6;
+        margin: 0.2rem 0;
+        }
+
+        .opinion-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.8rem;
+        color: #475569;
+        }
+
+        .opinion-stars {
+        color: #facc15;
+        letter-spacing: 2px;
+        }
+
+        .opinion-stars .empty {
+        color: #d1d9e6;
+        }
+
+        .opinion-fecha {
+        background: #eef2f6;
+        padding: 0.15rem 0.7rem;
+        border-radius: 30px;
+        font-size: 0.7rem;
+        font-weight: 500;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 700px) {
+        .dashboard {
+            padding: 1.8rem 1.2rem;
+        }
+        .dashboard-header h1 {
+            font-size: 1.6rem;
+        }
+        .bar-label {
+            width: 90px;
+            font-size: 0.85rem;
+        }
+        .semi-circle-wrapper {
+            width: 80px;
+            height: 80px;
+        }
+        .semi-circle-wrapper svg {
+            width: 80px;
+            height: 80px;
+        }
+        .semi-circle-wrapper .center-value {
+            font-size: 1.3rem;
+        }
+        .global-satisfaction {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        .satisfaction-left {
+            width: 100%;
+            justify-content: space-between;
+        }
+        .semi-circle-wrapper.global {
+            width: 75px;
+            height: 75px;
+        }
+        .semi-circle-wrapper.global svg {
+            width: 75px;
+            height: 75px;
+        }
+        }
+
+        @media (max-width: 480px) {
+        .metric-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+        .opinion-grid {
+            grid-template-columns: 1fr;
+        }
+        .bar-item {
+            gap: 0.5rem;
+        }
+        .bar-label {
+            width: 70px;
+            font-size: 0.75rem;
+        }
+        .dashboard-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+        .semi-circle-wrapper {
+            width: 70px;
+            height: 70px;
+        }
+        .semi-circle-wrapper svg {
+            width: 70px;
+            height: 70px;
+        }
+        .semi-circle-wrapper .center-value {
+            font-size: 1.1rem;
+        }
+        .satisfaction-left {
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        .global-stars {
+            font-size: 0.9rem;
+        }
+    }
+
+    .hero1 {
+            background-image: url("img/slogan.png");
+            background-repeat: no-repeat;
+            background-size:cover;
+            width: 100%; /* estaba en 100 para centrar el texto */
+            height: 400px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        .hero1 h1 {
+            font-size: 3.8rem;
+            font-weight: 700;
+        }
+        .hero1 .badge-experience {
+            background-color: #6d6c6b;
+            padding: 0.5rem 1.8rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1rem;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .hero1 p {
+        margin: 5px 0 0 0;
+        font-size: 26px;
+        }
+
+        .hero1 p span {
+            letter-spacing: 2px;
+            border-bottom: 2px solid var(--accent-color);
+            font-family: "Times New Roman", Times, serif;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#"><span>Logística y Distribución </span> MINA</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMain">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" href="#inicio"></a></li>
+                <li class="nav-item"><a class="nav-link" href="#nosotros"></a></li>
+                <li class="nav-item"><a class="nav-link" href="#servicios"></a></li>
+                <li class="nav-item"><a class="nav-link" href="#galeria"></a></li>
+                <li class="nav-item"><a class="nav-link" href="#testimonios"></a></li>
+                <li class="nav-item"><a class="nav-link" href="#contacto"></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section id="inicio" class="hero">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                <div class="badge-experience mx-auto">Logística y Distribución Mina</div>
+                <h1 class="mb-3">+ 20 años de experiencia<br> moviendo confianza por todo México</h1>
+                    <div class="container" data-aos="fade-up" data-aos-delay="100">
+                            <p style="position: absolute; top: 450px; left: 150px; z-index: 10; width: 150px; height: 100px;">
+                                <span style="color: #b2b4b4;" class="typed" data-typed-items="Transporte Seguro, Controlado, y, Ambientalmente Responsable."></span>
+                            </p>
+                    </div>
+                    <br>
+                <a href="#contacto" class="btn btn-whatsapp-custom"><i class="bi bi-whatsapp me-2"></i>Contactanos</a>
+            </div>
+        </div>
+    </div>
+    <br>
+    <img src="img/logo.png" style="position: absolute; top: 400px; left: 1030px; z-index: 10; width: 150px; height: 100px;">
+    <br>
+    <!--
+    <div style="text-align: right; margin-top: 5rem; font-size: 0.75rem; margin-right: 3%; color: #f5f6f8; letter-spacing: 0.5px; opacity: 5; border-top: 0px solid rgba(232, 234, 238, 0.904); padding-top: 10rem;">  
+        <img src="img/logo1.png" style="background-repeat: no-repeat; background-position: absolute; background-size: contain; width: 100%; height: 100px;" alt="Logo de la Empresa">
+    </div> -->
+</section>
+
+<!-- Historia y trayectoria -->
+<section id="nos" class="py-5 py-md-6">
+    <div class="container py-5">
+        <div class="row g-5 align-items-center" style="text-align: center;">
+            <div class="">
+                <h2 class="section-title mt-2">Historia y <strong style="color: rgb(6, 6, 126);">Trayectoria</strong></h2>
+                <p class="mt-3 lead">Somos una empresa con experiencia, iniciamos nuestra trayectoria con el nombre <strong><strong>MINA</strong></strong> sumando años de antigüedad en el giro.</p>
+                <p class="mt-3 lead">Por la satisfacción de nuestros servicios y el crecimiento de nuestra empresa, nos renovamos así pasando a lo que actualemnte somos <strong><strong>Logística y Distribución MINA S.A. de C.V.</strong></strong></p>
+                <p class="mt-3 lead">Día con día seguimos creciendo y fortaleciendonos en el giro por nuestro compromiso con los valores y responsabilidades para una mejora continua de los servicios para nuestros clientes.</p>
+                
+            </div>
+            
+        </div>
+        <div class="" style="text-align: center;">
+            <br><img src="img/logo1.png" alt="Logo Mina" class="img-fluid rounded-4 shadow-lg" style="object-fit: cover; width: 20%;">
+        </div>
+    </div>
+    
+</section>
+
+
+<!-- NOSOTROS -->
+<section id="nosotros" class="py-5 py-md-6">
+    <div class="container py-5">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6">
+                <h2 class="section-title mt-2">MISIÓN Y VISIÓN</h2><br>
+                <span class="section-sub" style="color: blue;">LOGÍSTICA Y DISTRIBUCIÓN MINA</span>
+                
+                <p class="mt-3 lead"><strong style="font-size:xx-large;"><strong>Misión</strong></strong><br>Ofrecer soluciones de transporte confiables, con calidad, eficiencia y excelente atención, asegurando el correcto manejo de la mercacía.</p>
+                <p class="mt-3 lead"><strong style="font-size:xx-large;"><strong>Visión</strong></strong><br>Ser una empresa lider y reconocida a nivel local y nacional, destacando por nuestra flexibilidad, soluciones a la medida y una flotilla moderna que garantice un servicio confiable.</p>
+                <div class="row mt-4 text-center text-md-start">
+                    <div class="col-sm-4 mb-3">
+                        <div class="stat-number">20+</div>
+                        <div class="stat-label">Años de experiencia en el rubro</div>
+                    </div>
+                    <div class="col-sm-4 mb-3">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Servicio Integral</div>
+                    </div>
+                    <div class="col-sm-4 mb-3">
+                        <div class="stat-number">10/10</div>
+                        <div class="stat-label">Asesoramiento personalizado</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6" style="text-align: center;">
+                <img src="img/mision.png" alt="Mision" class="img-fluid rounded-4 shadow-lg" style="object-fit: cover; width: 80%;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- NOSOTROS -->
+<section id="nosotros" class="py-5 py-md-6">
+    <img src="img/vectore.png" style="opacity: 0.2; left: 440px; position: absolute; z-index: -500; width: 900px; height: 1000px;">
+    <div class="container py-5">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6">
+                <h2 class="section-title mt-2">NUESTROS <strong style="color: rgb(6, 6, 126);">SERVICIOS</strong></h2><br>
+                <span class="section-sub" style="color: blue;">LOGÍSTICA Y DISTRIBUCIÓN MINA</span><br>
+                <br><img src="img/delivery.webp" style="height: 250px; width: 250px;">
+                <p class="mt-3 lead"><strong style="font-size:xx-large;"><strong>Transporte de Carga en General</strong></strong><br>En <strong><strong>Logistica y distrubición Mina</strong></strong> nos comprometemos a prestar un sevicio de <strong><strong>calidad</strong></strong> dándole a los clientes una solución en transporte de <strong><strong>carga terrestre, confiable y seguro,</strong></strong> basados en una mejora constante para la satisfacción de nuestros usuarios.</p>
+                
+            </div>
+            <div class="col-lg-6" style="text-align: center;">
+                <img src="img/logo1.png" style="position: absolute; z-index: 10; width: 150px; height: 100px;">
+                <img src="img/nes.jpg" alt="Mision" class="img-fluid rounded-4 shadow-lg" style="object-fit: cover; width: 80%;">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- MAPA LOCOOOOOOO-->
+<section id="nosotro" class="py-5 py-md-6" style="text-align: center;">
+    <img src="img/vectore.png" style="opacity: 0.2; left: 440px; position: absolute; z-index: -500; width: 900px; height: 1000px;">
+    <h2 class="section-title mt-2">¿A donde <strong style="color: rgb(6, 6, 126);"> Transportamos?</strong></h2>          
+    <div class="container py-5">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6">
+                <span class="section-sub" style="color: rgb(1, 1, 58);">Todo México</span>
+                <div id="map" style="width: 100%; height: 500px;"></div>
+            </div>
+            <img src="img/logo1.png" style="left: 900px; position: absolute; z-index: -500; width: 250px; height: 140px; transform: translate(10%, -150%);">
+            <div class="col-lg-6" style="text-align: right;"> 
+                
+                <p class="mt-3 lead"><strong>Transporte rápido a toda la <strong><strong>Republica Mexicana</strong></strong> las 24 hrs; especializados en <strong><strong>manejo de material QUÍMICO, AGROPECUARIO, AUTOMOTRIZ, EMPAQUE DE GRADO ALIMENTICIO;</strong></strong> con mas de 20 años de experiencia incluyendo servicio dedicado, <strong><strong>SERVICO RECURRENTE.</strong></strong></p>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- SERVICIOS PRINCIPALES (3 pilares) -->
+<section id="servicios" class="py-5">
+    <img src="img/sec6.png" style="opacity: 0.9; left: 750px; position: absolute; z-index: -500; width: 700px; height: 500px;">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            
+    <h2 class="section-title mt-2">¿porqué <strong style="color: rgb(6, 6, 126);"> Elegirnos?</strong></h2>
+            <p class="lead mx-auto" style="max-width: 700px;">Con más de 20 años de trayectoria en el sector del transporte, en <strong><strong>Logística y Distribución Mina</strong></strong> entendemos que tu mercancía no solo necesita moverse, necesita llegar segura, puntual y en las mejores condiciones. Aquí te decimos porque somos tu mejor opción:</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="service-card">
+                    
+                    <div class="service-icon"><i class="bi bi-check-circle"></i></div>
+                    <h3 class="h4">Infraestructura y flota propia</h3>
+                    <p style="color: #696867;">Ofrecer mejores tiempos de respuesta y control sobre el servicio.</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="service-card">
+                    
+                    <div class="service-icon"><i class="bi bi-check-circle"></i></div>
+                    <h3 class="h4">Cobertura Nacional</h3>
+                    <p style="color: #696867">desde nuestros inicios en el centro del país y el bajío, hemos expandido nuestras rutas a destinos clave como Yucatán, Sinaloa, Sonora, Hermosillo, Monterrey y muchos más.</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="service-card">
+        
+                    <div class="service-icon"><i class="bi bi-check-circle"></i></div>
+                    <h3 class="h4">Experiencia que da confianza</h3>
+                    <p style="color: #696867">Nuestra historia esta respaldada por miles de kilómetros recorridos y clientes satisfechos. Somos una empresa familiar que ha crecido con base en esfuerzo, compromiso y servicio.</p>
+                </div>
+            </div>
+            <img src="img/se62.png" style="left: 610px; position: absolute; z-index: -500; width: 380px; height: 500px; transform: translate(100%, -20%);">
+        </div>
+        <br><p style="color: #696867;">Confianza, calidad y compromiso en cada kilómetro.</p>
+    </div>
+    
+</section>
+
+<!-- unidades -->
+<section id="nosotros" class="py-5 py-md-6">
+    <img src="img/vectore.png" style="opacity: 0.1; left: 440px; position: absolute; z-index: -500; width: 900px; height: 1000px;">
+    <div class="container py-5">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6">
+                <h2 class="section-title mt-2">UNIDADES</h2><br>
+                <span class="section-sub" style="color: blue;">LOGÍSTICA Y DISTRIBUCIÓN MINA</span>
+                <br>
+                <p class="mt-3 lead">Unidades disponibles en capacidades desde 1 tonelada, hasta 14 toneladas</p>
+                    <ul>
+                        <li>Caja seca 53", 48" y 40".</li>
+                        <li>Plataformas de 40".</li>
+                        <li>Camioneta/ Caja seca 3mts y 6mts.</li>
+                        <li>Camioneta Plataforma 6mts.</li>
+                        <li>Rabón Caja seca.</li>
+                        <li>Thorton Caja seca.</li>
+                        <li>Camioneta Nissan caja seca/ Plataforma.</li>
+                        <li>Todas las unidades cuentan con sistema de rastreo satelital, (GPS).</li>
+                    </ul>
+                <p class="mt-3 lead">Todas las unidades cuentan con sistema de rastreo satelital, (GPS).</p>
+                <img src="img/logo1.png" style="opacity: 0.3; left: 900px; position: absolute; z-index: -500; width: 210px; height: 140px; transform: translate(10%, -150%);">
+            </div>
+        </div>
+        <div class="row g-2">
+            <div class="col-md-6 col-lg-3">
+                <div class="test-card">
+                    <img src="img/unidadesc.png" style=" border-radius: 24px; width: 100%;" alt="Unidad 1">
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="test-card">
+                    <img src="img/unidadesc2.png" style=" border-radius: 24px; width: 100%; height: 108px;" alt="Unidad 1">
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="test-card">
+                    <img src="img/unidades3c.png" style=" border-radius: 24px; object-fit: cover; width: 100%; height: 108px;" alt="Unidad 1">
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="test-card">
+                    <img src="img/unidades4c.png" style=" border-radius: 24px; width: 100%; height: 108px;" alt="Unidad 1">
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="test-card">
+                    <img src="img/marca.png" style=" border-radius: 24px; object-fit: cover; width: 50%; height: 106px;" alt="Unidad 1">
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="test-card">
+                    <img src="img/marca1.png" style=" border-radius: 24px; width: 50%; object-fit: cover; height: 106px;" alt="Unidad 1">
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="test-card">
+                    <img src="img/marca2.png" style=" border-radius: 24px; width: 50%; object-fit: cover; height: 106px;" alt="Unidad 1">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Dashboard-->
+<section id="nosotro" class="py-5 py-md-6" style="text-align: center;">
+    <div class="dashboard">
+    
+    <!-- HEADER -->
+        <div class="dashboard-header">
+            <h1>
+                <i class="fas fa-chart-pie"></i> 
+                ¿POR QUÉ ELEGIR L&D MINA?
+            </h1>
+            <div class="fecha-dinamica" id="fechaDinamica">
+                <i class="far fa-calendar-alt"></i>
+                <span>cargando fecha...</span>
+            </div>
+        </div>
+
+        <!-- ===== NUEVA TARJETA: SATISFACCIÓN GLOBAL ===== -->
+        <div class="global-satisfaction">
+            <div class="satisfaction-left">
+                <div class="satisfaction-title">
+                    <span class="label"><i class="fas fa-medal" style="color:#facc15;"></i> Satisfacción global</span>
+                </div>
+                <!-- Semicírculo 93% -->
+                <div class="semi-circle-wrapper global" id="semiGlobal">
+                    <svg viewBox="0 0 100 100">
+                        <circle class="bg-circle" cx="50" cy="50" r="42" />
+                        <circle class="progress-circle" cx="50" cy="50" r="42" stroke="#22c55e" stroke-dasharray="263.89" stroke-dashoffset="calc(263.89 * (1 - 0.93))" />
+                    </svg>
+                    <div class="center-value">93%</div>
+                </div>
+                <!-- Estrellas: 4.5 -->
+                <div class="global-stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fa-solid fa-star-half"></i>
+                <br><span>Promedio general</span>
+                <span style="margin-left:0.3rem;">4.5</span>
+            </div>
+        </div>
+        <div class="global-badge">
+            Basado en 9 criterios evaluados por nuestros clientes.
+        </div>
+    </div>
+
+        <!-- MÉTRICAS SUPERIORES (con semicírculo) -->
+        <h4>RESULTADOS POR CRITERIO EVALUADO</h4>
+        <div class="metric-grid">
+        <!-- disponibilidad de vehiculos -->
+        <div class="metric-card">
+            <div class="metric-label"><i class="fa-solid fa-circle-1"></i>DISPONIBILIDAD DE VEHÍCULOS</div>
+            <div style="font-size: 50px;"><i class="fa-solid fa-truck-fast" style="font-size: 50px; color: #0b1b33;"></i></div>
+                <div class="semi-circle-wrapper" id="semiAprobacion">
+                    <svg viewBox="0 0 100 100">
+                        <circle class="bg-circle" cx="50" cy="50" r="42" />
+                        <circle class="progress-circle" cx="50" cy="50" r="42" stroke="#22c55e" stroke-dasharray="263.89" stroke-dashoffset="calc(263.89 * (1 - 0.87))" />
+                    </svg>
+                <div class="center-value">83%</div>
+            </div>
+            
+            <span class="metric-trend"><i class="fas fa-arrow-up"></i> SATISFACCIÓN</span>
+        </div>
+        <!-- EQUIPOS Y HERRAMIENTAS -->
+        <div class="metric-card">
+            <div class="metric-label"><i class="fa-solid fa-circle-1"></i>EQUIPOS Y <br>HERRAMIENTAS</div>
+            <div style="font-size: 50px;"><i class="fa-sharp fa-solid fa-screwdriver-wrench" style="font-size: 50px; color: #0b1b33;"></i></div>
+                <div class="semi-circle-wrapper" id="herramientas">
+                    <svg viewBox="0 0 100 100">
+                        <circle class="bg-circle" cx="50" cy="50" r="42" />
+                        <circle class="progress-circle" cx="50" cy="50" r="42" stroke="#22c55e" stroke-dasharray="263.89" stroke-dashoffset="calc(263.89 * (1 - 0.87))" />
+                    </svg>
+                <div class="center-value">89%</div>
+                </div>
+            <span class="metric-trend"><i class="fas fa-arrow-up"></i> SATISFACCIÓN</span>
+        </div>
+        <!-- Puntualidad y eficacia -->
+        <div class="metric-card">
+            <div class="metric-label"><i class="fa-solid fa-circle-1"></i>PUNTUALIDAD Y <br>EFICACIA</div>
+            <div style="font-size: 50px;"><i class="fa-mosaic fa-solid fa-clock" style="font-size: 50px; color: #0b1b33;"></i></div>
+                <div class="semi-circle-wrapper" id="puntualidad">
+                    <svg viewBox="0 0 100 100">
+                        <circle class="bg-circle" cx="50" cy="50" r="42" />
+                        <circle class="progress-circle" cx="50" cy="50" r="42" stroke="#22c55e" stroke-dasharray="263.89" stroke-dashoffset="calc(263.89 * (1 - 0.87))" />
+                    </svg>
+                <div class="center-value">92%</div>
+                </div>
+            <span class="metric-trend"><i class="fas fa-arrow-up"></i> SATISFACCIÓN</span>
+        </div>
+        <!-- cumplimiento de seguridad -->
+        <div class="metric-card">
+            <div class="metric-label">CUMPLIMIENTO DE <br>SEGURIDAD</div>
+            <div style="font-size: 50px;"><i class="fa-solid fa-shield" style="font-size: 50px; color: #0b1b33;"></i></div>
+                <div class="semi-circle-wrapper" id="seguridad">
+                    <svg viewBox="0 0 100 100">
+                        <circle class="bg-circle" cx="50" cy="50" r="42" />
+                        <circle class="progress-circle" cx="50" cy="50" r="42" stroke="#22c55e" stroke-dasharray="263.89" stroke-dashoffset="calc(263.89 * (1 - 0.87))" />
+                    </svg>
+                <div class="center-value">92%</div>
+                </div>
+            <span class="metric-trend"><i class="fas fa-arrow-up" ></i> SATISFACCIÓN</span>
+        </div>
+        <!-- Atencion a quejas y o sugerencias -->
+        <div class="metric-card">
+            <div class="metric-label">ATENCIÓN A QUEJAS Y/O SUGERENCIAS</div>
+            <div style="font-size: 50px;"><i class="fa-solid fa-headset" style="font-size: 50px; color: #0b1b33;"></i></div>
+                <div class="semi-circle-wrapper" id="atencion">
+                    <svg viewBox="0 0 100 100">
+                        <circle class="bg-circle" cx="50" cy="50" r="42" />
+                        <circle class="progress-circle" cx="50" cy="50" r="42" stroke="#22c55e" stroke-dasharray="263.89" stroke-dashoffset="calc(263.89 * (1 - 0.87))" />
+                    </svg>
+                <div class="center-value">80%</div>
+                </div>
+            <span class="metric-trend"><i class="fas fa-arrow-up"></i> SATISFACCIÓN</span>
+        </div>
+        <!-- competencia del presonal -->
+        <div class="metric-card">
+            <div class="metric-label">COMPETENCIA DEL <br>PERSONAL</div>
+            <div style="font-size: 50px;"><i class="fa-solid fa-user" style="font-size: 50px; color: #0b1b33;"></i></div>
+                <div class="semi-circle-wrapper" id="competencia">
+                    <svg viewBox="0 0 100 100">
+                        <circle class="bg-circle" cx="50" cy="50" r="42" />
+                        <circle class="progress-circle" cx="50" cy="50" r="42" stroke="#22c55e" stroke-dasharray="263.89" stroke-dashoffset="calc(263.89 * (1 - 0.87))" />
+                    </svg>
+                <div class="center-value">100%</div>
+                </div>
+            <span class="metric-trend"><i class="fas fa-arrow-up"></i> SATISFACCIÓN</span>
+        </div>
+        <!-- cumplimiento de requisitos -->
+        <div class="metric-card">
+            <div class="metric-label">CUMPLIMIENTO DE <br>REQUISITOS</div>
+            <div style="font-size: 50px;"><i class="fa-sharp fa-solid fa-list-check" style="font-size: 50px; color: #0b1b33;"></i></div>
+                <div class="semi-circle-wrapper" id="cumplimiento">
+                    <svg viewBox="0 0 100 100">
+                        <circle class="bg-circle" cx="50" cy="50" r="42" />
+                        <circle class="progress-circle" cx="50" cy="50" r="42" stroke="#22c55e" stroke-dasharray="263.89" stroke-dashoffset="calc(263.89 * (1 - 0.87))" />
+                    </svg>
+                <div class="center-value">100%</div>
+                </div>
+            <span class="metric-trend"><i class="fas fa-arrow-up"></i> SATISFACCIÓN</span>
+        </div>
+        <!-- ORDEN, ASEO Y MANTENIMIENTO -->
+        <div class="metric-card">
+            <div class="metric-label">ORDEN, ASEO Y <br>MANTENIMIENTO</div>
+                <div style="font-size: 50px;"><i class="fa-solid fa-broom" style="font-size: 50px; color: #0b1b33;"></i></div>
+                    <div class="semi-circle-wrapper" id="orden">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="bg-circle" cx="50" cy="50" r="42" />
+                            <circle class="progress-circle" cx="50" cy="50" r="42" stroke="#22c55e" stroke-dasharray="263.89" stroke-dashoffset="calc(263.89 * (1 - 0.87))" />
+                        </svg>
+                        <div class="center-value">100%</div>
+                    </div>
+                    <span class="metric-trend"><i class="fas fa-arrow-up"></i> SATISFACCIÓN</span>
+                </div>
+            </div>
+        </div>    
+
+        <!-- OPINIONES DE CLIENTES -->
+        <div class="opinion-section">
+            <div class="opinion-header">
+                <h3><i class="fas fa-comments"></i> Opiniones recientes</h3>
+                <span class="chart-badge" style="background:#e9e3f5; color:#4c2f7a;"><i class="fas fa-rotate-right"></i> actualizado hoy</span>
+            </div>
+            <div class="opinion-grid" id="opinionGrid">
+            <!-- inyectado desde JS -->
+            </div>
+        </div>
+        <br>
+        <!-- Lo que nos motiva -->
+        <div class="metric-card1" style="text-align: center;">
+            <!-- ===== Tarjeta final ===== -->
+            <div class="global" style="text-align: center;">
+                <span style="color: #10c257; text-align: center; position:relative;">Lo que nos motiva</span><br>
+                <div class="satisfaction-lef" style="text-align: center;">
+                    <div class="satisfaction-title" style="text-align: center;">
+                        <span class="label" style="text-align: center;"><i class="fa-solid fa-users" style="font-size: 30px;"></i> Cada opinión nos ayuda a mejorar y a seguir brindando un servicio confiable, seguro y de calidad.</span>
+                    </div><br>
+                    <div class="global-badge1" style="text-align: center; position:relative; justify-content: center;">
+                        ¡GRACIAS POR CONFIAR EN NOSOSTROS!
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    <script>
+        (function() {
+        // ----- FECHA DINÁMICA -----
+        const fechaSpan = document.querySelector('#fechaDinamica span');
+        if (fechaSpan) {
+            const now = new Date();
+            const opciones = { year: 'numeric', month: 'long', day: 'numeric' };
+            fechaSpan.textContent = now.toLocaleDateString('es-ES', opciones);
+        }
+
+        // ----- ACTUALIZAR SEMICÍRCULOS (con valores dinámicos) -----
+        function setCircleProgress(selector, percent) {
+            const circle = document.querySelector(selector);
+            if (!circle) return;
+            const radius = 42;
+            const circumference = 2 * Math.PI * radius; // ≈ 263.89
+            const offset = circumference * (1 - percent);
+            circle.style.strokeDasharray = circumference;
+            circle.style.strokeDashoffset = offset;
+        }
+
+        // Global 93%
+        setCircleProgress('#semiGlobal .progress-circle', 0.93);
+        // Métricas
+        setCircleProgress('#semiAprobacion .progress-circle', 0.83);
+        setCircleProgress('#herramientas .progress-circle', 0.89);  // 4.6/5 = 0.92
+        setCircleProgress('#puntualidad .progress-circle', 0.92);
+        setCircleProgress('#seguridad .progress-circle', 0.92);
+        setCircleProgress('#atencion .progress-circle', 0.80);
+        setCircleProgress('#competencia .progress-circle', 1);
+        setCircleProgress('#cumplimiento .progress-circle', 1);
+        setCircleProgress('#orden .progress-circle', 1);
+        setCircleProgress('#semiActivos .progress-circle', 0.78);   // 1.4k / 1.8k aprox
+        setCircleProgress('#semiOpiniones .progress-circle', 0.65); // 94 de 144 aprox
+
+        // ----- OPINIONES IMAGINARIAS (dinámicas) -----
+        const opinionesData = [
+            { cliente: "María G.", texto: "Excelente atención, resolvieron mi duda en minutos. Muy contenta.", estrellas: 5, fecha: "hace 2h", avatar: "fa-user" },
+            { cliente: "Carlos R.", texto: "El producto llegó antes de lo esperado y en perfectas condiciones. 10/10", estrellas: 5, fecha: "hace 5h", avatar: "fa-user-circle" },
+            { cliente: "Lucía M.", texto: "Buena calidad, pero el soporte podría mejorar en horarios extendidos.", estrellas: 4, fecha: "hace 8h", avatar: "fa-user" },
+            { cliente: "Javier P.", texto: "Facturación clara y rápida. Muy profesional, repetiré.", estrellas: 5, fecha: "hace 1d", avatar: "fa-user-circle" },
+            { cliente: "Sofía N.", texto: "La experiencia fue regular, el envío tardó más de lo indicado.", estrellas: 3, fecha: "hace 1d", avatar: "fa-user" },
+            { cliente: "Diego L.", texto: "¡Increíble! El soporte me ayudó a configurar todo en 10 min.", estrellas: 5, fecha: "hace 2d", avatar: "fa-user-circle" }
+        ];
+
+        function generarEstrellas(rating) {
+            let html = '';
+            const total = 5;
+            for (let i = 1; i <= total; i++) {
+            html += i <= rating ? '<i class="fas fa-star"></i>' : '<i class="fas fa-star empty"></i>';
+            }
+            return html;
+        }
+
+        const grid = document.getElementById('opinionGrid');
+        if (grid) {
+            grid.innerHTML = '';
+            const seleccionadas = [];
+            const copia = [...opinionesData];
+            while (seleccionadas.length < 4 && copia.length > 0) {
+            const idx = Math.floor(Math.random() * copia.length);
+            seleccionadas.push(copia.splice(idx, 1)[0]);
+            }
+            while (seleccionadas.length < 4) {
+            seleccionadas.push(opinionesData[Math.floor(Math.random() * opinionesData.length)]);
+            }
+
+            seleccionadas.forEach((op) => {
+            const card = document.createElement('div');
+            card.className = 'opinion-card';
+            const inicial = op.cliente.charAt(0);
+            card.innerHTML = `
+                <div class="opinion-cliente">
+                <i class="fas ${op.avatar}"></i>
+                <span>${op.cliente}</span>
+                </div>
+                <div class="opinion-texto">“${op.texto}”</div>
+                <div class="opinion-footer">
+                <span class="opinion-stars">${generarEstrellas(op.estrellas)}</span>
+                <span class="opinion-fecha"><i class="far fa-clock"></i> ${op.fecha}</span>
+                </div>
+            `;
+            grid.appendChild(card);
+            });
+        }
+
+        // ----- EFECTO DINÁMICO EN BARRAS (variación aleatoria) -----
+        const barras = document.querySelectorAll('.bar-fill');
+        if (barras.length) {
+            const randomIndex = Math.floor(Math.random() * barras.length);
+            const barra = barras[randomIndex];
+            if (barra) {
+            const currentWidth = parseFloat(barra.style.width) || 80;
+            const delta = Math.floor(Math.random() * 10) - 5;
+            let newWidth = Math.min(98, Math.max(60, currentWidth + delta));
+            barra.style.width = newWidth + '%';
+            const parent = barra.closest('.bar-item');
+            if (parent) {
+                const percentSpan = parent.querySelector('.bar-percent');
+                if (percentSpan) {
+                percentSpan.textContent = Math.round(newWidth) + '%';
+                }
+            }
+            }
+        }
+        })();
+    </script>
+</section>
+
+
+<!-- GALERÍA (imágenes aleatorias desde LoremFlick / Picsum pero temática construcción)     cada imagen es reemplazable fácilmente, todas son de dominio público o placeholder -->
+<section id="galeria" class="py-5">
+    <img src="img/vectore.png" style="opacity: 0.1; left: 440px; position: absolute; z-index: -500; width: 900px; height: 1000px;">
+    <div class="container py-4">
+        <div class="text-center mb-5">
+            <h2 class="section-title mt-2">NUESTROS <strong style="color: rgb(6, 6, 126);"> CLIENTES</strong></h2>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4">
+                <img class="gallery-img" src="img/cliente1.png" alt="Proyecto residencial 1">
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <img class="gallery-img" src="img/cliente2.jpg" alt="Obra moderna">
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <img class="gallery-img" src="img/cliente3.png" alt="Detalle arquitectura">
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <img class="gallery-img" src="img/cliente4.png" alt="Construcción en proceso">
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <img class="gallery-img" src="img/cliente5.png" alt="Fachada contemporanea">
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <img class="gallery-img" src="img/cliente6.png" alt="Interior luminoso">
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <img class="gallery-img" src="img/cliente7.png" alt="Interior luminoso">
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <img class="gallery-img" src="img/cliente8.jpg" alt="Interior luminoso">
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <img class="gallery-img" src="img/cliente9.png" alt="Interior luminoso">
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <img class="gallery-img" src="img/cliente10.png" alt="Interior luminoso">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="inicio" class="hero1">
+    <img src="img/lineae.png" style="position: absolute; left: 0px; z-index: 10; width: 1370px; height: 50px; transform: translate(-0%, -500%);">
+    <img src="img/lineae.png" style="position: absolute; left: 0px; z-index: 10; width: 1370px; height: 50px; transform: translate(-0%, 500%);">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                    <h2 class="mb-3" style="font-style: italic;">Logística y distribución Mina</h2><br> 
+                    <p style="font-style: italic;">La calidad no depende de un departamento. Depende de cada decisión que tomamos todos los días.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACTO con WhatsApp -->
+<section id="contacto" class="py-5">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="section-title mt-2">COMUNICATE CON <strong style="color: rgb(6, 6, 126);"> NOSOTROS</strong></h2>
+                <p class="lead mb-4">Escribinos por WhatsApp.</p>
+                <div class="card shadow-sm border-0 rounded-4 p-4 p-md-5 bg-light">
+                    <form id="contactForm" action="#" method="post">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control form-control-lg" placeholder="Nombre completo" required id="nombre">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control form-control-lg" placeholder="Email" required id="email">
+                            </div>
+                            <div class="col-12">
+                                <input type="tel" class="form-control form-control-lg" placeholder="Teléfono (opcional)" id="telefono">
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control" rows="4" placeholder="Mensaje..." id="mensaje"></textarea>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <button type="button" class="btn btn-whatsapp-custom" id="whatsappBtn"><i class="bi bi-whatsapp me-2"></i>WhatsApp</button>
+                                <p class="small text-muted mt-3">Al enviar, se abrirá WhatsApp con tu consulta.</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="pt-5 pb-4">
+    <img src="img/trailer.png" style="position: absolute; left: 1093px; z-index: 10; width: 320px; height: 310px; transform: translate(-22%, -16%);">
+    <img src="img/logo.png" style="position: absolute; left: 230px; z-index: 10; width: 150px; height: 100px; transform: translate(-22%, 85%);">
+    <div class="container">
+        <div class="row gy-4">
+            <div class="col-md-5">
+                <h4 class="fw-bold text-white">Logística y Distribución MINA</h4><br>
+                <p class="text-white-50"><i class="fa-solid fa-location-dot" style="font-size: 20px; color: white;"></i>         Agua Prieta S/N, Agua Azul, El Marques, Qro. CP. 76244</p>
+            </div>
+            <div class="col-md-4">
+                <h5 class="fw-semibold text-white">Contacto rápido</h5>
+                <p class="text-white-50"><i class="bi bi-envelope"></i> transportesmina@outlook.com <br>direccion@transportesmina.com.mx <br>logistica@transportesmina.com.mx</p>
+                <p class="text-white-50"><i class="bi bi-telephone"></i> 44 6139 2937 | 44 2219 2730 | 46 6669 7881</p>
+        
+            </div>
+        </div>
+        <hr class="mt-4 bg-white-50">
+        <div class="text-center text-white-50 small py-2">
+            © 2026 Logística y Distribución MINA.
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Vendor JS Files -->
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/aos/aos.js"></script>
+<script src="vendor/typed.js/typed.umd.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+<script>
+    // Función para generar mensaje automático y abrir WhatsApp (con datos del formulario)
+    document.getElementById('whatsappBtn').addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Obtener valores
+        let nombre = document.getElementById('nombre').value.trim();
+        let email = document.getElementById('email').value.trim();
+        let telefono = document.getElementById('telefono').value.trim();
+        let mensaje = document.getElementById('mensaje').value.trim();
+        
+        // Texto base
+        let textoWhats = "Hola, me gustaría recibir información.%0A";
+        if (nombre !== "") {
+            textoWhats += `%0A*Nombre:* ${encodeURIComponent(nombre)}%0A`;
+        }
+        if (email !== "") {
+            textoWhats += `*Email:* ${encodeURIComponent(email)}%0A`;
+        }
+        if (telefono !== "") {
+            textoWhats += `*Teléfono:* ${encodeURIComponent(telefono)}%0A`;
+        }
+        if (mensaje !== "") {
+            textoWhats += `%0A*Consulta:* ${encodeURIComponent(mensaje)}%0A`;
+        } else {
+            textoWhats += `%0A*Consulta:* Me gustaría recibir información sobre sus servicios.`;
+        }
+        
+        // Número de WhatsApp (se puede reemplazar por el número real de la empresa.)
+        let numeroWhatsApp = "524616067919";  // Número demo, reemplazar por el real.
+        let url = `https://wa.me/${numeroWhatsApp}?text=${textoWhats}`;
+        window.open(url, '_blank');
+    });
+
+    // Smooth scroll para los enlaces internos
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href === "#" || href === "") return;
+            const target = document.querySelector(href);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+
+    const selectTyped = document.querySelector('.typed');
+    if (selectTyped) {
+    let typed_strings = selectTyped.getAttribute('data-typed-items');
+    typed_strings = typed_strings.split(',');
+    new Typed('.typed', {
+        strings: typed_strings,
+        loop: true,
+        typeSpeed: 100,
+        backSpeed: 50,
+        backDelay: 2000
+    });
+    }
+
+</script>
+</body>
+</html>
