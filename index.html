@@ -2,6 +2,25 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+    <title>Logística y Distribución Mina</title>
+
+    <link href="img/logo.png" rel="icon">
+
+    <!-- Fuentes para el dashboard o algo asi -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS + Icons + Google Fonts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Google Fonts: tipología moderna y profesional -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+
 
     <!-- amCharts javascript sources -->
 		<script type="text/javascript" src="https://www.amcharts.com/lib/3/ammap.js"></script>
@@ -81,24 +100,6 @@
 					}
 				});
 		</script>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Logística y Distribución Mina</title>
-
-    <link href="img/logo.png" rel="icon">
-
-    <!-- Fuentes para el dashboard o algo asi -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-
-    <!-- Bootstrap 5 CSS + Icons + Google Fonts -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- Google Fonts: tipología moderna y profesional -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
     <style>
 
         :root {
@@ -106,7 +107,7 @@
             --secondary-color: #2c3e50;
             --text-color: #fff;
             --transition-speed: 0.5s;
-            --slide-width: 1200px;
+            --slide-width: 100%; /* estaba en 1200px*/
             --slide-height: 400px;
         }
 
@@ -115,6 +116,11 @@
             padding: 0;
             box-sizing: border-box;
             font-family: "Times New Roman", Times, serif;
+        }
+
+        
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -471,13 +477,13 @@
         border: 1px solid #22c55e30;
         padding: 0.3rem 1rem;
         border-radius: 60px;
-        font-size: 0.8rem;
-        font-weight: 600;
+        font-size: 0.7rem;
+        font-weight: 500;
         color: #ecf1ee;
         display: flex;
         align-items: center;
-        gap: 0.4rem;
-        white-space: nowrap;
+        gap: 0.2rem;
+        white-space: wrap; /*estaba en nowrap*/
         }
 
         /* ===== TARJETAS MÉTRICAS (con semicírculo) ===== */
@@ -614,105 +620,7 @@
         margin-right: 3px;
         }
 
-        /* ===== GRÁFICO DINÁMICO (aprobación) ===== */
-        .chart-section {
-        background: #f9fafc;
-        border-radius: 2rem;
-        padding: 1.8rem 1.8rem 1.8rem 1.8rem;
-        margin-bottom: 2.5rem;
-        border: 1px solid #edf2f7;
-        }
-
-        .chart-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        margin-bottom: 1.8rem;
-        }
-
-        .chart-header h3 {
-        font-size: 1.25rem;
-        font-weight: 600;
-        color: #0b1b33;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        }
-
-        .chart-header h3 i {
-        color: #3b82f6;
-        }
-
-        .chart-badge {
-        background: #e0e8f3;
-        border-radius: 60px;
-        padding: 0.3rem 1rem;
-        font-size: 0.8rem;
-        font-weight: 500;
-        color: #1e3a5f;
-        }
-
-        /* barras de aprobación (dinámicas) */
-        .chart-bars {
-        display: flex;
-        flex-direction: column;
-        gap: 1.2rem;
-        }
-
-        .bar-item {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        flex-wrap: wrap;
-        }
-
-        .bar-label {
-        width: 120px;
-        font-weight: 500;
-        color: #1e293b;
-        font-size: 0.95rem;
-        }
-
-        .bar-track {
-        flex: 1;
-        height: 12px;
-        background: #e2e8f0;
-        border-radius: 40px;
-        overflow: hidden;
-        min-width: 120px;
-        box-shadow: inset 0 1px 2px rgba(0,0,0,0.04);
-        }
-
-        .bar-fill {
-        height: 100%;
-        border-radius: 40px;
-        background: linear-gradient(90deg, #3b82f6, #60a5fa);
-        width: 0%;
-        transition: width 0.6s ease;
-        box-shadow: 0 0 6px rgba(59,130,246,0.2);
-        }
-
-        .bar-fill.opinion-positive {
-        background: linear-gradient(90deg, #22c55e, #4ade80);
-        }
-
-        .bar-fill.opinion-neutral {
-        background: linear-gradient(90deg, #f59e0b, #fbbf24);
-        }
-
-        .bar-fill.opinion-negative {
-        background: linear-gradient(90deg, #ef4444, #f87171);
-        }
-
-        .bar-percent {
-        min-width: 48px;
-        text-align: right;
-        font-weight: 600;
-        color: #0f172a;
-        font-size: 0.95rem;
-        }
-
+        
         /* ===== SECCIÓN OPINIONES ===== */
         .opinion-section {
         margin-top: 1.5rem;
@@ -897,9 +805,11 @@
     }
 
     .hero1 {
-            background-image: url("img/slogan.png");
+            background-image: url(img/slogan.png);
+            z-index: 10; 
             background-repeat: no-repeat;
-            background-size:cover;
+            background-size:cover;    
+
             width: 100%; /* estaba en 100 para centrar el texto */
             height: 400px;
             min-height: 100vh;
@@ -907,6 +817,14 @@
             align-items: center;
             text-align: center;
             color: white;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 1rem;
+            position: relative;
+            margin: 0 auto;
+            margin-bottom: 1rem;
         }
         .hero1 h1 {
             font-size: 3.8rem;
@@ -934,6 +852,29 @@
             font-family: "Times New Roman", Times, serif;
         }
 
+        /* Por defecto (móviles) la imagen está oculta */
+        .logo {
+            display: none;
+        }
+
+        /* En pantallas mayores a 600px, se muestra */
+        @media screen and (min-width: 600px) {
+            .logo {
+                display: block; /* o inline-block, flex, etc. */
+            }
+        }
+        /* Por defecto (móviles) la imagen está oculta */
+        .vector {
+            display: none;
+        }
+
+        /* En pantallas mayores a 600px, se muestra */
+        @media screen and (min-width: 600px) {
+            .vector {
+                display: block; /* o inline-block, flex, etc. */
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -942,9 +883,6 @@
 <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
         <a class="navbar-brand" href="#"><span>Logística y Distribución </span> MINA</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
         <div class="collapse navbar-collapse" id="navbarMain">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link" href="#inicio"></a></li>
@@ -966,7 +904,7 @@
                 <div class="badge-experience mx-auto">Logística y Distribución Mina</div>
                 <h1 class="mb-3">+ 20 años de experiencia<br> moviendo confianza por todo México</h1>
                     <div class="container" data-aos="fade-up" data-aos-delay="100">
-                            <p style="position: absolute; top: 450px; left: 150px; z-index: 10; width: 150px; height: 100px;">
+                            <p>
                                 <span style="color: #b2b4b4;" class="typed" data-typed-items="Transporte Seguro, Controlado, y, Ambientalmente Responsable."></span>
                             </p>
                     </div>
@@ -976,7 +914,7 @@
         </div>
     </div>
     <br>
-    <img src="img/logo.png" style="display: block; margin: 0 auto; position: absolute; top: 400px; left: 1030px; z-index: 10; width: 150px; height: 100px;">
+    <img id="logo" class="logo" src="img/logo.png" style="position: absolute; top: 400px; left: 1030px; z-index: 10; width: 150px; height: 100px;">
     <br>
     <!--
     <div style="text-align: right; margin-top: 5rem; font-size: 0.75rem; margin-right: 3%; color: #f5f6f8; letter-spacing: 0.5px; opacity: 5; border-top: 0px solid rgba(232, 234, 238, 0.904); padding-top: 10rem;">  
@@ -1037,9 +975,9 @@
     </div>
 </section>
 
-<!-- NOSOTROS -->
+<!-- Nuestros servicios -->
 <section id="nosotros" class="py-5 py-md-6">
-    <img src="img/vectore.png" style="opacity: 0.2; left: 440px; position: absolute; z-index: -500; width: 900px; height: 1000px;">
+    <img class="vector" src="img/vectore.png" style="opacity: 0.2; left: 440px; position: absolute; z-index: -500; width: 900px; height: 1000px; max-width: 100%; height: auto; margin: 0 auto;">
     <div class="container py-5">
         <div class="row g-5 align-items-center">
             <div class="col-lg-6">
@@ -1058,7 +996,7 @@
 </section>
 <!-- MAPA LOCOOOOOOO-->
 <section id="nosotro" class="py-5 py-md-6" style="text-align: center;">
-    <img src="img/vectore.png" style="opacity: 0.2; left: 440px; position: absolute; z-index: -500; width: 900px; height: 1000px;">
+    <img class="vector" src="img/vectore.png" style="opacity: 0.2; left: 440px; position: absolute; z-index: -500; width: 900px; height: 1000px;">
     <h2 class="section-title mt-2">¿A donde <strong style="color: rgb(6, 6, 126);"> Transportamos?</strong></h2>          
     <div class="container py-5">
         <div class="row g-5 align-items-center">
@@ -1066,7 +1004,7 @@
                 <span class="section-sub" style="color: rgb(1, 1, 58);">Todo México</span>
                 <div id="map" style="width: 100%; height: 500px;"></div>
             </div>
-            <img src="img/logo1.png" style="left: 900px; position: absolute; z-index: -500; width: 250px; height: 140px; transform: translate(10%, -150%);">
+            <img class="logo" src="img/logo1.png" style="left: 900px; position: absolute; z-index: -500; width: 250px; height: 140px; transform: translate(10%, -150%);">
             <div class="col-lg-6" style="text-align: right;"> 
                 
                 <p class="mt-3 lead"><strong>Transporte rápido a toda la <strong><strong>Republica Mexicana</strong></strong> las 24 hrs; especializados en <strong><strong>manejo de material QUÍMICO, AGROPECUARIO, AUTOMOTRIZ, EMPAQUE DE GRADO ALIMENTICIO;</strong></strong> con mas de 20 años de experiencia incluyendo servicio dedicado, <strong><strong>SERVICO RECURRENTE.</strong></strong></p>
@@ -1079,7 +1017,7 @@
 
 <!-- SERVICIOS PRINCIPALES (3 pilares) -->
 <section id="servicios" class="py-5">
-    <img src="img/sec6.png" style="opacity: 0.9; left: 750px; position: absolute; z-index: -500; width: 700px; height: 500px;">
+    <img class="vector" src="img/sec6.png" style="opacity: 0.9; left: 750px; position: absolute; z-index: -500; width: 700px; height: 500px;">
     <div class="container py-5">
         <div class="text-center mb-5">
             
@@ -1111,7 +1049,7 @@
                     <p style="color: #696867">Nuestra historia esta respaldada por miles de kilómetros recorridos y clientes satisfechos. Somos una empresa familiar que ha crecido con base en esfuerzo, compromiso y servicio.</p>
                 </div>
             </div>
-            <img src="img/se62.png" style="left: 610px; position: absolute; z-index: -500; width: 380px; height: 500px; transform: translate(100%, -20%);">
+            <img class="vector" src="img/se62.png" style="left: 610px; position: absolute; z-index: -500; width: 380px; height: 500px; transform: translate(100%, -20%);">
         </div>
         <br><p style="color: #696867;">Confianza, calidad y compromiso en cada kilómetro.</p>
     </div>
@@ -1120,7 +1058,7 @@
 
 <!-- unidades -->
 <section id="nosotros" class="py-5 py-md-6">
-    <img src="img/vectore.png" style="opacity: 0.1; left: 440px; position: absolute; z-index: -500; width: 900px; height: 1000px;">
+    <img class="vector" src="img/vectore.png" style="opacity: 0.1; left: 440px; position: absolute; z-index: -500; width: 900px; height: 1000px;">
     <div class="container py-5">
         <div class="row g-5 align-items-center">
             <div class="col-lg-6">
@@ -1139,7 +1077,7 @@
                         <li>Todas las unidades cuentan con sistema de rastreo satelital, (GPS).</li>
                     </ul>
                 <p class="mt-3 lead">Todas las unidades cuentan con sistema de rastreo satelital, (GPS).</p>
-                <img src="img/logo1.png" style="opacity: 0.3; left: 900px; position: absolute; z-index: -500; width: 210px; height: 140px; transform: translate(10%, -150%);">
+                <img class="logo" src="img/logo1.png" style="opacity: 0.3; left: 900px; position: absolute; z-index: -500; width: 210px; height: 140px; transform: translate(10%, -150%);">
             </div>
         </div>
         <div class="row g-2">
@@ -1478,7 +1416,7 @@
 
 <!-- GALERÍA (imágenes aleatorias desde LoremFlick / Picsum pero temática construcción)     cada imagen es reemplazable fácilmente, todas son de dominio público o placeholder -->
 <section id="galeria" class="py-5">
-    <img src="img/vectore.png" style="opacity: 0.1; left: 440px; position: absolute; z-index: -500; width: 900px; height: 1000px;">
+    <img class="vector" src="img/vectore.png" style="opacity: 0.1; left: 440px; position: absolute; z-index: -500; width: 900px; height: 1000px;">
     <div class="container py-4">
         <div class="text-center mb-5">
             <h2 class="section-title mt-2">NUESTROS <strong style="color: rgb(6, 6, 126);"> CLIENTES</strong></h2>
@@ -1519,8 +1457,8 @@
 </section>
 
 <section id="inicio" class="hero1">
-    <img src="img/lineae.png" style="position: absolute; left: 0px; z-index: 10; width: 1370px; height: 50px; transform: translate(-0%, -500%);">
-    <img src="img/lineae.png" style="position: absolute; left: 0px; z-index: 10; width: 1370px; height: 50px; transform: translate(-0%, 500%);">
+    <img src="img/lineae.png" style="max-width: 100%; height: auto; display: block; margin: 0 auto; position: absolute; left: 0px; z-index: 10; width: 100%; height: 50px; transform: translate(-0%, -500%);">
+    <img src="img/lineae.png" style="max-width: 100%; height: auto; display: block; margin: 0 auto; position: absolute; left: 0px; z-index: 10; width: 100%; height: 50px; transform: translate(-0%, 500%);">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-9">
@@ -1567,7 +1505,7 @@
 
 <!-- FOOTER -->
 <footer class="pt-5 pb-4">
-    <img src="img/trailer.png" style="position: absolute; left: 1093px; z-index: 10; width: 320px; height: 310px; transform: translate(-22%, -16%);">
+    <img class="logo" src="img/trailer.png" style="position: absolute; left: 1093px; z-index: 10; width: 320px; height: 310px; transform: translate(-22%, -16%);">
     <img src="img/logo.png" style="position: absolute; left: 230px; z-index: 10; width: 150px; height: 100px; transform: translate(-22%, 85%);">
     <div class="container">
         <div class="row gy-4">
